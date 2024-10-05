@@ -19,9 +19,9 @@ app.use(express.json());
 
 // ROUTES
 
-app.use("/auth",authRoute)
-app.use("/users",userRoute)
-app.use("/parcel",parcelRoute)
+app.use("/api/v1/auth",authRoute)
+app.use("/api/v1/users",userRoute)
+app.use("/api/v1/parcel",parcelRoute)
 
 
 // DARABASE CONNECTION
@@ -39,5 +39,5 @@ mongoose.connect(DB).then(()=>{
 const PORT = process.env.PORT;
 
 app.listen(PORT, () =>{
-    console.log(`server is running on port ${PORT}`)
+    console.log(`Server is running on port ${PORT}`)
 }) 

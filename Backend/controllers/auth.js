@@ -19,9 +19,10 @@ const registerUser = async (req, res) => {
       process.env.PASS
     ).toString(),
   });
-
+console.log(newUser);
   try {
     const user = await newUser.save();
+    console.log("we are in try block of register");
     res.status(201).json(user);
   } catch (error) {
     res.status(500).json(error);
@@ -30,12 +31,12 @@ const registerUser = async (req, res) => {
 
 // LOGIN USER
 
-const loginUser = async (req, routes) => {
+const loginUser = async (req, res) => {
   try {
-    const user = await User.findone({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) {
       return res.status(401).json("You are not registered");
-    }
+    } 
 
     const hashedPassword = CryptoJs.AES.decrypt(
       user.password,
